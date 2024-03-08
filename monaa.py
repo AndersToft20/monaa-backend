@@ -10,6 +10,6 @@ def monaa_handler(file, regex: str):
 
 
     with open("./temp_files/monaa_output/monaa_output.txt", "r") as f:
-        data = f.read()
-        return data
+        lines = f.readlines
+        return lines
 
