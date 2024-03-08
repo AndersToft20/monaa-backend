@@ -16,20 +16,10 @@ def monaa():
     file = request.files['file']
     if not file.filename.endswith('.txt'):
         return error_response("File format is incorrect. Only .txt files are allowed.")
-    
-    file_content = file.read()
-    content = file_content.decode()
 
-    #Below is just to print file in terminal to inspect it
-    lines = content.splitlines()
     regex = request.form.get('regex', None)
-    print("Lines in file:")
-    for line in lines:
-        print(line)
-    if regex:
-        print('Regex: ', regex)
-    ###################################################
 
-    result = monaa_handler(content, regex)
+
+    result = monaa_handler(file, regex)
     
     return json_response("monaa search success", monaa_result=result)
