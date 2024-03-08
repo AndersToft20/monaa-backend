@@ -19,7 +19,6 @@ def monaa():
 
     regex = request.form.get('regex', None)
 
-
     result = monaa_handler(file, regex)
     
     return json_response("monaa search success", monaa_result={"lines": result})
