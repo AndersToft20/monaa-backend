@@ -1,7 +1,6 @@
 import os
 
 def monaa_handler(file, regex: str):
-    print(file)
     path = os.path.join("./temp_files/monaa_input", "log.txt")
     file.save(path)
 
