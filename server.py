@@ -9,14 +9,19 @@ CORS(app)
 
 @app.route('/monaa/', methods=['POST'])
 def monaa():
-    print(request.body)
-    if not "file" in request.form:
-        return error_response("Missing file in request")
-    if not "regex" in request.form:
-        return error_response("Missing regex in request")
+    data = request.json
+    print(data)
+    if not data:
+        return jsonify({'error': 'No data received'}), 400
 
-    file = request.form['file']
-    regex = request.form.get('regex', None)
+    if not "lines" in data:
+        return jsonify({'error': 'Missing lines in request'}), 400
+
+    if not "regex" in data:
+        return jsonify({'error': 'Missing regex in request'}), 400
+        
+    file = data['lines']
+    regex = data['regex']
 
     result = monaa_handler(file, regex)
     
