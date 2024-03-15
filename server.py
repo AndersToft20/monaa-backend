@@ -15,10 +15,6 @@ def monaa():
         return error_response("Missing regex in request")
 
     file = request.form['file']
-    print(file)
-    if not file.filename.endswith('.txt'):
-        return error_response("File format is incorrect. Only .txt files are allowed.")
-
     regex = request.form.get('regex', None)
 
     result = monaa_handler(file, regex)
