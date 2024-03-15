@@ -9,13 +9,14 @@ CORS(app)
 
 @app.route('/monaa/', methods=['POST'])
 def monaa():
-    if not "file" in request.post:
+    print(request)
+    if not "file" in request.form:
         return error_response("Missing file in request")
-    if not "regex" in request.post:
+    if not "regex" in request.form:
         return error_response("Missing regex in request")
 
-    file = request.post['file']
-    regex = request.post.get('regex', None)
+    file = request.form['file']
+    regex = request.form.get('regex', None)
 
     result = monaa_handler(file, regex)
     
