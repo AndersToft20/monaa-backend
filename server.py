@@ -10,7 +10,6 @@ CORS(app)
 @app.route('/monaa/', methods=['POST'])
 def monaa():
     data = request.json
-    print(data)
     if not data:
         return jsonify({'error': 'No data received'}), 400
 
